@@ -19,20 +19,21 @@
 
                     <livewire:like-post :post="$post" />
                 @endauth 
+
             </div>
 
             <div>
-                <p class="font-bold">{{ $post->user->username }}</p>
-                <p class="text-sm text-gray-500">{{ $post->created_at->diffForHumans()}}</p>
+                <p class="font-bold px-3 md:px-0">{{ $post->user->username }}</p>
+                <p class="text-sm text-gray-500 px-3 md:px-0">{{ $post->created_at->diffForHumans()}}</p>
 
-                <p class="mt-5">
+                <p class="mt-5 px-3 md:px-0">
                     {{ $post->descripcion }}
                 </p>
             </div>
 
             @auth
                 @if ($post->user_id === auth()->user()->id)
-                    <form method="POST" action="{{ route('posts.destroy', $post) }}">
+                    <form method="POST" action="{{ route('posts.destroy', $post) }}" class="px-3 md:px-0">
                         @method('DELETE') <!--METHOD SPOOFING-->
                         @csrf
                         <input type="submit"
